@@ -1,0 +1,150 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device.width">
+        <meta name="Author" content="Loren Mahia(lmahia01)">
+        <title> Lottery Simulator by Loren  </title>
+        <script>
+            function getRandomnumber(max,min) {
+                return Math.floor(Math.random() * (max - min + 1)) + min;
+            }
+            var rand_pick = [getRandomnumber(1,48),getRandomnumber(1,48),getRandomnumber(1,48),getRandomnumber(1,48),getRandomnumber(1,48)];
+            var rand_lucky = getRandomnumber(1,18);
+            rand_pick = rand_pick.sort();
+            var arr = prompt("Enter your first 5 lucky numbers separated by a space").split(/\s+/);
+            var lucky = prompt("Enter the lucky ball number");
+            arr = arr.sort();
+            var jackpot = [10,11,17,27,32];
+            var jack_lucky = 15;
+            var i;
+            var score = 0; 
+            function matching(arr){
+                for(i = 0; i < 5; i++) {
+                    if(arr[i] == jackpot[i]) {
+                        score ++;
+                    }
+                }
+                return score;
+            }   
+            function payout(scoring, lucknum) {
+                if (lucknum == 1) {
+                if (scoring == 5 ) {
+                    document.write("$7000 a WEEK for LIFE");
+                }
+                else if(scoring == 4){
+                    document.write("$5000");
+                }
+                else if(scoring == 3) {
+                    document.write("$150");
+                }
+                else if (scoring == 2 ) {
+                    document.write("$25");
+                }
+                else if (scoring == 1) {
+                    document.write("$6");
+                }
+                else {
+                    document.write("$4");
+                }
+             }
+            else if( lucknum == 0) {
+                if (scoring == 5) {
+                    document.write("$25000 a YEAR for LIFE");
+                }
+                else if(scoring == 4 ){
+                    document.write("$200");
+                }
+                else if(scoring == 3) {
+                    document.write("$20");
+                }
+                else if(scoring == 2) {
+                    document.write("$3");
+                }
+            }    
+                else {
+                    document.write(" Sorry not enough numbers matched ");
+                }
+            } 
+            function print (number1) {
+                for (i = 0; i < 5; i++) {
+                document.write(number1[i] + " ");
+            }
+            }      
+        </script>
+        <link rel="stylesheet" href="./style.css">
+    </head>
+    <body>
+        <h1>Welcome to the Lottery </h1>
+        <p>
+            <script>
+                document.write("My random numbers were: ");
+                print(rand_pick);
+            </script>
+            <br>
+        </p>
+        <p id="boldi">
+            <script>
+                document.write("Payout from my random numbers was: ");
+                payout(matching(rand_pick), rand_lucky);
+            </script>
+            <br>
+        </p>
+        <p>
+            <script>document.write("Your picks were: ")
+             for (i = 0; i < 5; i++) {
+                document.write(arr[i] + " ");
+            }
+            </script>
+            <br>
+        </p>
+        <p>
+            <script>
+            document.write("The winning numbers were: ");
+            print(jackpot);
+            </script>
+            <br>
+        </p>
+        <p>
+            <script>
+            document.write("The luck ball number is " + lucky);
+            var now = matching(arr);
+            var luck_match = 0;
+            if (lucky == jack_lucky){
+                luck_match = 1;
+            } 
+            </script>
+            <br>
+        </p>
+        <p>
+            <script>
+                document.write("The number of matches is: " + now);
+            </script>
+            <br>
+        </p>
+        <p> 
+            <script>
+            if ( luck_match == 0) {
+                document.write("The lucky ball did not match");
+            }
+            else {
+                document.write("Congrats! Your lucky ball matched");
+            }
+            </script>
+        </p>
+        <br>
+        <p id="boldi">
+            <script>
+                document.write("Your Payout is: ");
+                payout(score, luck_match);
+            </script>
+        </p>
+        <p>
+            <script>
+            
+            </script>
+        </p>
+        <section class="footer">
+            <p>Designed by Loren Mahia 2021</p>
+        </section>
+    </body>
+</html>
